@@ -9,11 +9,15 @@ const path = require('path');
 const componentGenerator = require('./component/index.js');
 const containerGenerator = require('./container/index.js');
 const languageGenerator = require('./language/index.js');
+const functionDocPartial = require('./partials/functionDocPartial');
+const componentTitlePartial = require('./partials/componentTitlePartial');
 
 module.exports = (plop) => {
   plop.setGenerator('component', componentGenerator);
   plop.setGenerator('container', containerGenerator);
   plop.setGenerator('language', languageGenerator);
+  plop.setPartial('functionDocPartial', functionDocPartial);
+  plop.setPartial('componentTitlePartial', componentTitlePartial);
   plop.addHelper('directory', (comp) => {
     try {
       fs.accessSync(path.join(__dirname, `../../app/containers/${comp}`), fs.F_OK);

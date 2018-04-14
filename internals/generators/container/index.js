@@ -46,6 +46,11 @@ module.exports = {
     message: 'Do you want i18n messages (i.e. will this component use text)?',
   }, {
     type: 'confirm',
+    name: 'wantHelpers',
+    default: true,
+    message: 'Do you want helpers (i.e. a place to export utility functions)?',
+  }, {
+    type: 'confirm',
     name: 'wantLoadable',
     default: true,
     message: 'Do you want to load resources asynchronously?',
@@ -161,6 +166,15 @@ module.exports = {
         type: 'add',
         path: '../../app/containers/{{properCase name}}/Loadable.js',
         templateFile: './component/loadable.js.hbs',
+        abortOnFail: true,
+      });
+    }
+
+    if (data.wantHelpers) {
+      actions.push({
+        type: 'add',
+        path: '../../app/containers/{{properCase name}}/helpers.js',
+        templateFile: './component/helpers.js.hbs',
         abortOnFail: true,
       });
     }

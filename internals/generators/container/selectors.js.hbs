@@ -5,14 +5,7 @@ import { createSelector } from 'reselect';
  */
 const select{{ properCase name }}Domain = (state) => state.get('{{ camelCase name }}');
 
-/**
- * Other specific selectors
- */
-
-
-/**
- * Default selector used by {{ properCase name }}
- */
+{{> functionDocPartial }}
 
 const makeSelect{{ properCase name }} = () => createSelector(
   select{{ properCase name }}Domain,
